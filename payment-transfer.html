@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>VANTAGE | Online Payment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="legal.css?v=20260421n">
+  <style>
+    .payment-card {
+      margin-top: 28px;
+    }
+
+    .transfer-box {
+      margin: 18px 0;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+      text-align: center;
+    }
+
+    .amount-box {
+      margin: 14px 0 0;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 107, 79, 0.12);
+      text-align: center;
+    }
+
+    .amount-label {
+      margin: 0;
+      color: #ffd9cf;
+      font-weight: 700;
+    }
+
+    .payment-amount {
+      margin: 8px 0 0;
+      font-size: clamp(1.2rem, 3.4vw, 1.6rem);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .transfer-number {
+      margin: 0 0 12px;
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      letter-spacing: 0.02em;
+      font-weight: 800;
+      color: #fff;
+      direction: ltr;
+      unicode-bidi: plaintext;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .proof-box {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .proof-title {
+      margin: 0 0 8px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .proof-note {
+      margin: 0 0 10px;
+      color: #d9e4fd;
+      line-height: 1.7;
+    }
+
+    .proof-input {
+      display: block;
+      width: 100%;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      border-radius: 10px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .proof-state {
+      margin: 10px 0 0;
+      color: #ffd9cf;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      border-color: rgba(255, 107, 79, 0.55);
+      background: linear-gradient(135deg, #ff6b4f, #ff8f58);
+      color: #fff;
+    }
+
+    .btn.is-disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+    <a class="brand" href="/" aria-label="VANTAGE Home">
+        <img src="/assets/brand/vantage-logo-brand.png" alt="VANTAGE Logo" width="612" height="408">
+    </a>
+      <a class="back-link" href="/">Back to Store</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="legal-card payment-card">
+      <h1>Complete Online Payment</h1>
+      <p class="muted">Transfer the required amount to the number below, then tap "I Have Paid" to send a ready confirmation to the admin WhatsApp.</p>
+      <p class="note">Your order is saved even if you decide to complete payment later.</p>
+
+      <section class="amount-box" aria-label="Amount due">
+        <p class="amount-label">Amount to Transfer</p>
+        <p id="payment-amount" class="payment-amount">Determining amount...</p>
+      </section>
+
+      <section class="transfer-box" aria-label="Payment transfer number">
+        <p id="transfer-number" class="transfer-number">+20 11 2216 3661</p>
+        <button id="copy-transfer-number" type="button" class="btn">Copy Transfer Number</button>
+      </section>
+
+      <section class="proof-box" aria-label="Transfer proof">
+        <h2 class="proof-title">Send Transfer Proof</h2>
+        <p class="proof-note">You need to upload the transfer receipt image first, then the "I Have Paid" button will activate automatically.</p>
+        <input
+          id="transfer-proof-file"
+          class="proof-input"
+          type="file"
+          accept="image/*"
+          aria-label="Upload transfer receipt image"
+        >
+        <p id="proof-state" class="proof-state">Transfer proof not uploaded yet.</p>
+      </section>
+
+      <div class="actions">
+        <a
+          id="paid-already-btn"
+          class="btn btn-primary is-disabled"
+          href="https://wa.me/201140094137"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-disabled="true"
+        >
+          I Have Paid
+        </a>
+        <a
+          id="open-whatsapp-btn"
+          class="btn"
+          href="https://wa.me/201140094137"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contact via WhatsApp
+        </a>
+        <a class="btn" href="/">Back to Store</a>
+      </div>
+
+      <p class="note">Current admin WhatsApp: <strong id="whatsapp-display">01140094137</strong></p>
+    </article>
+  </main>
+
+    <script defer src="payment-transfer.js?v=20260402a"></script>
+</body>
+</html>

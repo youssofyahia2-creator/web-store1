@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: y-store
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_PASSWORD_MIN_LENGTH
+        value: 6
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ADMIN_NOTIFY_EMAIL
+        sync: false
+      - key: ADMIN_NOTIFY_EMAILS
+        sync: false
+      - key: SUPPORT_REPLY_TO_EMAIL
+        sync: false
+      - key: EMAILJS_SERVICE_ID
+        sync: false
+      - key: EMAILJS_TEMPLATE_CUSTOMER_ID
+        sync: false
+      - key: EMAILJS_TEMPLATE_ADMIN_ID
+        sync: false
+      - key: EMAILJS_PUBLIC_KEY
+        sync: false
+      - key: EMAILJS_PRIVATE_KEY
+        sync: false

@@ -1,0 +1,12 @@
+{
+  "name": "yy-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VANTAGE production-ready storefront with admin and API",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.116.0"
+  }
+}

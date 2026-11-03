@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANTAGE | Admin Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="admin.css?v=20260421p">
+
+  <script defer src="products-data.js?v=20260421x"></script>
+  <script defer src="admin.js?v=20260325b"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/" aria-label="VANTAGE Home">
+        <img src="/assets/brand/vantage-logo-brand.png" alt="VANTAGE Logo" width="612" height="408">
+      </a>
+      <a class="back-link" href="/">Back to Store</a>
+    </div>
+  </header>
+
+  <main class="container page-content">
+    <section class="auth-card" id="auth-card">
+      <h1>Admin Dashboard</h1>
+      <p>
+        Login credentials are set on the server. On first local run, they may default to <strong>admin / 2026</strong>.
+      </p>
+
+      <form id="auth-form" class="auth-form" novalidate>
+        <label>
+          <span>Username</span>
+          <input id="admin-username" type="text" value="admin" required placeholder="admin">
+        </label>
+        <label>
+          <span>Password</span>
+          <input id="admin-password" type="password" required placeholder="********">
+        </label>
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </form>
+    </section>
+
+    <section id="admin-panel" class="admin-panel hidden">
+      <div class="panel-header">
+        <h2>Manage Products</h2>
+        <p>Any product you add here will automatically appear on the home page.</p>
+      </div>
+
+      <div class="tools-row">
+        <button id="change-password-btn" class="btn btn-ghost" type="button">Change Password</button>
+        <button id="logout-btn" class="btn btn-ghost" type="button">Logout</button>
+        <button id="export-btn" class="btn btn-ghost" type="button">Export Products JSON</button>
+        <label class="btn btn-ghost import-label" for="import-file">Import JSON</label>
+        <input id="import-file" type="file" accept="application/json">
+        <button id="reset-defaults-btn" class="btn btn-danger" type="button">Restore Default Products</button>
+      </div>
+
+      <article class="card setup-card">
+        <div class="setup-head">
+          <h3>Launch Readiness</h3>
+          <div class="setup-actions">
+            <button id="refresh-setup-btn" class="btn btn-ghost" type="button">Refresh Status</button>
+            <button id="copy-env-template-btn" class="btn btn-ghost" type="button">Copy ENV Template</button>
+          </div>
+        </div>
+        <p id="setup-summary" class="setup-summary">Checking readiness...</p>
+        <div id="setup-checks" class="setup-checks"></div>
+        <div class="setup-links">
+          <a id="setup-link-payment" class="btn btn-ghost btn-small" href="https://faq.whatsapp.com/" target="_blank" rel="noopener noreferrer">Manual Payment Guide</a>
+          <a id="setup-link-whatsapp" class="btn btn-ghost btn-small" href="https://www.whatsapp.com/business/" target="_blank" rel="noopener noreferrer">WhatsApp Business</a>
+          <a id="setup-link-domain" class="btn btn-ghost btn-small" href="https://www.namecheap.com/domains/" target="_blank" rel="noopener noreferrer">Buy a Domain</a>
+          <a id="setup-link-email" class="btn btn-ghost btn-small" href="https://workspace.google.com/" target="_blank" rel="noopener noreferrer">Business Email</a>
+        </div>
+      </article>
+
+      <div class="admin-grid">
+        <article class="card">
+          <h3 id="form-title">Add New Product</h3>
+          <form id="product-form" class="product-form" novalidate>
+            <input id="product-id" type="hidden">
+
+            <label>
+              <span>Product Name</span>
+              <input id="name" type="text" required placeholder="e.g. Signature Tee">
+            </label>
+
+            <div class="grid-two">
+              <label>
+                <span>Price</span>
+                <input id="price" type="number" min="1" required placeholder="1200">
+              </label>
+
+              <label>
+                <span>Currency</span>
+                <input id="currency" type="text" value="EGP" required>
+              </label>
+            </div>
+
+            <label>
+              <span>Category</span>
+              <input id="category" type="text" required placeholder="T-Shirt / Hoodie / Pants">
+            </label>
+
+            <label>
+              <span>Product Description</span>
+              <textarea id="description" rows="3" required placeholder="A clear product description"></textarea>
+            </label>
+
+            <label>
+              <span>Image URL</span>
+              <input id="image" type="url" placeholder="https://...">
+            </label>
+
+            <label class="file-field" for="image-file">
+              <span>Or upload an image from your device</span>
+              <input id="image-file" type="file" accept="image/*">
+            </label>
+
+            <label>
+              <span>Sizes (comma separated)</span>
+              <input id="sizes" type="text" value="S,M,L,XL,XXL">
+            </label>
+
+            <label>
+              <span>Colors (comma separated)</span>
+              <input id="colors" type="text" value="White,Black,Red">
+            </label>
+
+            <label class="checkbox">
+              <input id="featured" type="checkbox">
+              <span>Mark as Featured</span>
+            </label>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="save-btn">Save Product</button>
+              <button type="button" class="btn btn-ghost" id="clear-form-btn">Clear Fields</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="card">
+          <h3>Current Products</h3>
+          <div id="products-list" class="products-list"></div>
+          <p id="no-products" class="no-products hidden">No products yet.</p>
+        </article>
+      </div>
+
+      <article class="card orders-card">
+        <div class="orders-head">
+          <h3>Orders</h3>
+          <div class="orders-tools">
+            <select id="order-status-filter" class="orders-filter" aria-label="Filter by order status">
+              <option value="all">All Statuses</option>
+              <option value="new">New</option>
+              <option value="in_progress">In Progress</option>
+              <option value="ready_to_ship">Ready to Ship</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <select id="order-payment-filter" class="orders-filter" aria-label="Filter by payment status">
+              <option value="all">All Payment Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="paid">Paid</option>
+              <option value="failed">Failed</option>
+              <option value="expired">Expired</option>
+            </select>
+            <input
+              id="order-search"
+              class="orders-search"
+              type="search"
+              placeholder="Customer name / Phone / Product / Order ID"
+              aria-label="Search orders"
+            >
+            <button id="refresh-orders-btn" class="btn btn-ghost" type="button">Refresh Orders</button>
+          </div>
+        </div>
+        <div class="orders-stats">
+          <article class="stat-card">
+            <span>Total Orders</span>
+            <strong id="stat-total-orders">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Open Orders</span>
+            <strong id="stat-open-orders">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Paid Orders</span>
+            <strong id="stat-paid-orders">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Total Expected Revenue</span>
+            <strong id="stat-total-revenue">0 EGP</strong>
+          </article>
+          <article class="stat-card">
+            <span>Confirmed Revenue</span>
+            <strong id="stat-paid-revenue">0 EGP</strong>
+          </article>
+        </div>
+        <div id="orders-list" class="orders-list"></div>
+        <p id="no-orders" class="no-products hidden">No orders yet.</p>
+      </article>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

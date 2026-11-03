@@ -1,0 +1,7 @@
+{
+  "username": "admin",
+  "salt": "3cfbad11d05867d724f74d7b130291f6",
+  "hash": "017a71c61ace01c0f3c919c5825c45bba47742c3326f4419f1cc7c930d33861e48db5b7b0c4048cd10a3785dc28e04199e0914099801ab0cca7f2f891f016409",
+  "mustChangePassword": false,
+  "updatedAt": "2026-09-10T08:07:44.800Z"
+}

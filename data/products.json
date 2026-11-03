@@ -1,0 +1,167 @@
+[
+  {
+    "id": "vantage-signature-tee",
+    "name": "VANTAGE Signature Tee",
+    "price": 1200,
+    "currency": "EGP",
+    "category": "T-Shirts",
+    "description": "A basic tee with clean lines and a comfortable fabric for everyday wear.",
+    "image": "/assets/vantage-signature-tee.jpg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Black",
+      "White",
+      "Navy"
+    ],
+    "featured": true
+  },
+  {
+    "id": "vantage-midnight-monogram",
+    "name": "VANTAGE Midnight Monogram",
+    "price": 1280,
+    "currency": "EGP",
+    "category": "T-Shirts",
+    "description": "Subtle monogram details and a premium touch for a night-out look.",
+    "image": "/assets/vantage-signature-tee.jpg",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Black",
+      "Grey"
+    ],
+    "featured": true
+  },
+  {
+    "id": "vantage-gold-line-tee",
+    "name": "VANTAGE Gold Line Tee",
+    "price": 1340,
+    "currency": "EGP",
+    "category": "T-Shirts",
+    "description": "A metallic gold print that adds a bold presence without overdoing it.",
+    "image": "/assets/vantage-signature-tee.jpg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Black",
+      "Off White"
+    ],
+    "featured": false
+  },
+  {
+    "id": "vantage-oversized-core",
+    "name": "VANTAGE Oversized Core",
+    "price": 1390,
+    "currency": "EGP",
+    "category": "T-Shirts",
+    "description": "A relaxed oversized cut with heavyweight fabric and a clear street look.",
+    "image": "/assets/vantage-signature-tee.jpg",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Black",
+      "White",
+      "Olive"
+    ],
+    "featured": true
+  },
+  {
+    "id": "vantage-shadow-print",
+    "name": "VANTAGE Shadow Print",
+    "price": 1260,
+    "currency": "EGP",
+    "category": "T-Shirts",
+    "description": "A light shadow print that adds depth without visual clutter.",
+    "image": "/assets/vantage-signature-tee.jpg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Black",
+      "Charcoal"
+    ],
+    "featured": false
+  },
+  {
+    "id": "vantage-street-mark",
+    "name": "VANTAGE Street Mark",
+    "price": 1320,
+    "currency": "EGP",
+    "category": "T-Shirts",
+    "description": "A clear streetwear style with a small chest embroidery and a clean finish.",
+    "image": "/assets/vantage-signature-tee.jpg",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Black",
+      "Navy",
+      "White"
+    ],
+    "featured": false
+  },
+  {
+    "id": "vantage-premium-heavy",
+    "name": "VANTAGE Premium Heavy Tee",
+    "price": 1450,
+    "currency": "EGP",
+    "category": "T-Shirts",
+    "description": "A heavy, structured fabric for people who love a distinctive tee drape.",
+    "image": "/assets/vantage-signature-tee.jpg",
+    "sizes": [
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Black",
+      "Brown",
+      "Beige"
+    ],
+    "featured": true
+  },
+  {
+    "id": "vantage-minimal-badge",
+    "name": "VANTAGE Minimal Badge",
+    "price": 1180,
+    "currency": "EGP",
+    "category": "T-Shirts",
+    "description": "A minimal tee with a small logo and an easygoing everyday look.",
+    "image": "/assets/vantage-signature-tee.jpg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "White",
+      "Black",
+      "Off White"
+    ],
+    "featured": false
+  }
+]

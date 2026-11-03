@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="VANTAGE - A clothing store with strong ready-made designs and a fast WhatsApp ordering experience."
+  >
+  <meta name="keywords" content="VANTAGE, clothing, t-shirts, printing, Egyptian brand, online store">
+  <meta name="author" content="VANTAGE">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#060608">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="VANTAGE | Your Style, Your Way">
+  <meta property="og:description" content="Choose from the latest products and order the right piece for you in a few quick, clear steps.">
+  <meta property="og:image" content="/assets/vantage-signature-tee.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VANTAGE | Your Style, Your Way">
+  <meta name="twitter:description" content="Distinctive products, consistent quality, and a fast, easy ordering experience.">
+  <meta name="twitter:image" content="/assets/vantage-signature-tee.jpg">
+  <link rel="canonical" href="/">
+  <title>VANTAGE | Your Style, Your Way</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="style.css?v=20260423f">
+
+  <script defer src="products-data.js?v=20260423d"></script>
+  <script defer src="script.js?v=20260423f"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a href="#home" class="logo" aria-label="VANTAGE Home">
+        <img src="/assets/brand/vantage-logo-brand.png" alt="VANTAGE Logo" width="612" height="408">
+      </a>
+
+      <button
+        id="nav-toggle"
+        class="nav-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#design-studio" class="nav-highlight-link">Design Your Tee</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About the Brand</a></li>
+        <li class="nav-auth-item">
+          <button id="auth-trigger-btn" type="button" class="btn btn-outline nav-auth-btn">
+            Sign In / Sign Up
+          </button>
+          <div id="auth-user-chip" class="auth-user-chip hidden">
+            <span id="auth-user-email" class="auth-user-email"></span>
+            <button id="auth-logout-btn" type="button" class="auth-logout-btn">Logout</button>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="hero-kicker">DROP 2026</p>
+          <h1>Design your own tee, no designer needed</h1>
+          <p class="hero-sub">
+            Upload your logo, add your name, pick a shirt color, and preview your piece before you order it in seconds.
+          </p>
+          <div class="hero-actions">
+            <a href="#design-studio" class="btn btn-primary">Start Designing Now</a>
+            <a href="#products" class="btn btn-outline">Browse Ready-Made Products</a>
+          </div>
+          <ul class="hero-highlights">
+            <li><strong>+500</strong> Happy Customers</li>
+            <li><strong>48h</strong> Fast Turnaround</li>
+            <li><strong>Premium</strong> Selected Fabrics</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <article class="hero-card">
+            <p class="hero-card-label">Best Seller</p>
+            <img src="/assets/vantage-signature-tee.jpg" alt="Featured VANTAGE product">
+            <h3>VANTAGE Signature Tee</h3>
+            <p>A clean style and all-day comfort.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="design-studio" class="section container design-studio-section">
+      <div class="section-head">
+        <h2 class="section-title">Design Studio</h2>
+        <p>
+          Upload a logo or image, add your name or any text, move, resize, and place them anywhere, and choose
+          the shirt color you want. The preview updates live as you go.
+        </p>
+      </div>
+
+      <div class="studio-layout">
+        <div class="studio-canvas-panel">
+          <div class="studio-canvas-wrap">
+            <canvas id="design-canvas" width="600" height="700" aria-label="T-shirt design preview"></canvas>
+          </div>
+          <p class="studio-canvas-hint">Drag an element to move it, and use the controls below to resize or rotate it.</p>
+        </div>
+
+        <div class="studio-controls-panel">
+          <div class="studio-control-group">
+            <h3>1. Shirt Color</h3>
+            <div id="studio-color-options" class="studio-color-options"></div>
+          </div>
+
+          <div class="studio-control-group">
+            <h3>2. Logo or Image</h3>
+            <label for="studio-logo-upload" class="studio-file-label">
+              Upload an image (PNG/JPG)
+              <input type="file" id="studio-logo-upload" accept="image/png,image/jpeg,image/webp" hidden>
+            </label>
+            <p id="studio-logo-name" class="studio-file-name">No image uploaded yet.</p>
+          </div>
+
+          <div class="studio-control-group">
+            <h3>3. Text (e.g. your name)</h3>
+            <label class="field">
+              <span>Enter Text</span>
+              <input type="text" id="studio-text-input" maxlength="24" placeholder="e.g. John">
+            </label>
+            <div class="studio-text-options">
+              <label class="field studio-color-field">
+                <span>Text Color</span>
+                <input type="color" id="studio-text-color" value="#ffffff">
+              </label>
+              <label class="field studio-font-field">
+                <span>Font</span>
+                <select id="studio-text-font">
+                  <option value="Tajawal, sans-serif">Tajawal</option>
+                  <option value="Cairo, sans-serif">Cairo</option>
+                  <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+                  <option value="Georgia, serif">Georgia</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="studio-control-group">
+            <h3>4. Selected Element Controls</h3>
+            <div class="studio-layer-tabs" role="tablist" aria-label="Choose the element to control">
+              <button type="button" id="studio-select-logo" class="studio-layer-tab is-active">Logo</button>
+              <button type="button" id="studio-select-text" class="studio-layer-tab">Text</button>
+            </div>
+            <label class="field">
+              <span>Size</span>
+              <input type="range" id="studio-scale-range" min="20" max="300" value="100">
+            </label>
+            <label class="field">
+              <span>Rotation</span>
+              <input type="range" id="studio-rotate-range" min="-180" max="180" value="0">
+            </label>
+            <button type="button" id="studio-reset-btn" class="btn btn-ghost btn-small">Reset Design</button>
+          </div>
+
+          <div class="studio-control-group">
+            <h3>5. Contact Information</h3>
+            <label class="field">
+              <span>Name</span>
+              <input type="text" id="studio-customer-name" placeholder="Your full name" required>
+            </label>
+            <label class="field">
+              <span>Phone Number</span>
+              <input type="tel" id="studio-customer-phone" placeholder="01XXXXXXXXX" required>
+            </label>
+          </div>
+
+          <button type="button" id="studio-confirm-btn" class="btn btn-primary btn-block">
+            Order This Design Now
+          </button>
+          <p class="studio-price-note">Base price: <strong>1,200 EGP</strong> (per shirt, before shipping)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section container">
+      <div class="section-head">
+        <h2 class="section-title">Products</h2>
+        <p>
+          Products here update automatically from the admin dashboard. Add a new product and it will show up here instantly.
+          You need to sign in to confirm any order.
+        </p>
+      </div>
+
+      <div id="product-filters" class="filters" aria-label="Product categories"></div>
+      <div id="products-grid" class="products-grid"></div>
+      <p id="empty-products" class="empty-message hidden">No products available right now.</p>
+    </section>
+
+    <div id="product-modal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <button
+          class="close-btn"
+          id="close-modal-btn"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+        <div class="modal-product">
+          <img id="modal-img" src="" alt="Product image">
+          <div class="modal-info">
+            <h3 id="modal-title">Product Name</h3>
+            <p id="modal-price" class="price-text"></p>
+            <p id="modal-description" class="muted-text"></p>
+          </div>
+        </div>
+
+        <form id="order-form" class="order-form" novalidate>
+          <h4>Confirm Order</h4>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Name</span>
+              <input type="text" id="order-name" name="name" placeholder="Your full name" required>
+            </label>
+
+            <label class="field">
+              <span>Phone Number</span>
+              <input type="tel" id="order-phone" name="phone" placeholder="01XXXXXXXXX" required>
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input type="email" id="order-email" name="email" placeholder="name@email.com">
+            </label>
+
+            <label class="field">
+              <span>Size</span>
+              <select id="order-size" name="size" required></select>
+            </label>
+
+            <label class="field">
+              <span>Color</span>
+              <select id="order-color" name="color" required></select>
+            </label>
+
+            <label class="field">
+              <span>Quantity</span>
+              <input type="number" id="order-qty" name="qty" min="1" value="1" required>
+            </label>
+          </div>
+
+          <button id="confirm-order-btn" type="submit" class="btn btn-primary btn-block order-action-btn">
+            <span class="order-btn-label">Confirm Order</span>
+            <span class="truck" aria-hidden="true">
+              <span class="back"></span>
+              <span class="front"></span>
+              <span class="window"></span>
+              <span class="wheel wheel-back"></span>
+              <span class="wheel wheel-front"></span>
+            </span>
+            <span class="road" aria-hidden="true"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="auth-modal" class="modal auth-modal" aria-hidden="true">
+      <div class="modal-content auth-modal-content">
+        <button
+          class="close-btn"
+          id="close-auth-modal-btn"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+        <div class="auth-head">
+          <p class="auth-kicker">MEMBERS ACCESS</p>
+          <h3>Sign in first to complete your order</h3>
+          <p id="auth-modal-note" class="auth-note">
+            Create an account with your email once, and future orders will be faster.
+          </p>
+        </div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Sign in or create an account">
+          <button
+            id="auth-tab-signin"
+            type="button"
+            class="auth-tab is-active"
+            role="tab"
+            aria-selected="true"
+          >
+            Sign In
+          </button>
+          <button
+            id="auth-tab-signup"
+            type="button"
+            class="auth-tab"
+            role="tab"
+            aria-selected="false"
+          >
+            Sign Up
+          </button>
+        </div>
+
+        <form id="signin-form" class="auth-form" novalidate>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" id="signin-email" name="email" placeholder="name@email.com" required>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input type="password" id="signin-password" name="password" placeholder="********" minlength="6" required>
+          </label>
+          <button id="signin-submit-btn" type="submit" class="btn btn-primary btn-block">Sign In</button>
+        </form>
+
+        <form id="signup-form" class="auth-form hidden" novalidate>
+          <label class="field">
+            <span>Name</span>
+            <input type="text" id="signup-name" name="name" placeholder="Your full name" minlength="2" required>
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" id="signup-email" name="email" placeholder="name@email.com" required>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input type="password" id="signup-password" name="password" placeholder="6 characters or more" minlength="6" required>
+          </label>
+          <button id="signup-submit-btn" type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <section id="about" class="section container about-minimal">
+      <article class="about-card-minimal">
+        <p class="about-kicker">About The Brand</p>
+        <h2>VANTAGE</h2>
+        <p>
+          A streetwear brand designed for people who love a clean, bold style. Premium fabrics, precise details,
+          and a fast, hassle-free shopping experience.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/201140094137"
+    aria-label="Contact us on WhatsApp"
+  >
+    <svg class="wa-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M13.6 2.33A7.86 7.86 0 0 0 8.06.72C3.73.72.22 4.23.22 8.56c0 1.39.36 2.74 1.05 3.93L.18 15.77l3.36-1.05a7.8 7.8 0 0 0 4.52 1.39h.01c4.33 0 7.84-3.52 7.84-7.84A7.8 7.8 0 0 0 13.6 2.33Zm-5.54 12.43h-.01c-1.1 0-2.18-.29-3.12-.84l-.23-.14-1.99.62.64-1.94-.15-.24A6.49 6.49 0 0 1 2 8.68c0-3.59 2.92-6.51 6.51-6.51 1.74 0 3.38.68 4.62 1.92a6.5 6.5 0 0 1 1.91 4.63c0 3.59-2.92 6.5-6.51 6.5Zm3.57-4.87c-.2-.1-1.16-.58-1.34-.64-.18-.07-.31-.1-.44.1-.13.2-.5.63-.62.77-.11.13-.23.15-.43.05-.19-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.19-.01-.3.09-.4.09-.09.2-.23.29-.34.1-.11.13-.2.2-.33.06-.13.03-.25-.02-.34-.05-.1-.44-1.07-.61-1.46-.15-.39-.32-.34-.44-.34h-.38a.73.73 0 0 0-.52.25c-.18.19-.69.67-.69 1.64 0 .97.71 1.9.81 2.03.1.13 1.38 2.12 3.36 2.97.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.16-.47 1.32-.93.17-.46.17-.85.12-.93-.05-.08-.18-.13-.38-.23Z"/>
+    </svg>
+    <span>WhatsApp</span>
+  </a>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/shipping.html">Shipping Policy</a>
+      <a href="/returns.html">Exchange & Returns</a>
+      <a href="/terms.html">Terms & Conditions</a>
+    </div>
+    <p>All rights reserved to VANTAGE © 2026</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
